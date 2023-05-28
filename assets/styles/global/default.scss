@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Gilroy", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: #{"max(800px, 100vh)"};
+  background-color: $bg-global-color;
+  color: $font-color;
+}
+
+#__nuxt {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-grow: 2;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 27px;
+}
+
+input, a, label, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+*::placeholder {
+  color: $font-sub-color;
+}

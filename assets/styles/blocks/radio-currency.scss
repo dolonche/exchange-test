@@ -1,0 +1,70 @@
+.radio-currency {
+  display: flex;
+  align-items: center;
+
+  &__input {
+    display: none;
+
+    &:checked {
+      & + label {
+        background-color: $bg-color-pale;
+        border-radius: $input-default-brs;
+        padding-inline: 13px;
+        &::before{
+          content: "";
+          width: 26px;
+          height: 26px;
+          background-color: $primary-color;
+          border-radius: $input-small-brs;
+          background-image: url(../img/icons/arrow-right.svg);
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 9px auto;
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    padding-block: 8px;
+    cursor: pointer;
+    width: fit-content;
+  }
+
+  &__media {
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-img {
+      min-width: 24px;
+      width: 24px;
+      height: auto;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 2px;
+    min-height: 26px;
+  }
+
+  &__name {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 18px;
+  }
+
+  &__subname {
+    font-size: 14px;
+    line-height: 16px;
+    color: $font-sub-color;
+    text-transform: uppercase;
+  }
+}
