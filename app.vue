@@ -81,10 +81,18 @@
             >
           </div>
           <div class="exchange__final-currency-sub">
-            <span class="exchange__final-currency-sub-min">Мин.: <span
-                v-if="currencyPair !== null">{{ currencyPair.from.min }} {{ currencyPair.from.currency }}</span></span>
-            <span class="exchange__final-currency-sub-max">Макс.: <span
-                v-if="currencyPair !== null">{{ currencyPair.from.max }} {{ currencyPair.from.currency }}</span></span>
+            <span class="exchange__final-currency-sub-min">Мин.:
+              <span
+                  v-if="currencyPair !== null"
+                  class="exchange__final-currency-sub-value">{{ currencyPair.from.min }} {{
+                  currencyPair.from.currency
+                }}</span></span>
+            <span class="exchange__final-currency-sub-max">Макс.:
+              <span
+                  v-if="currencyPair !== null"
+                  class="exchange__final-currency-sub-value">{{ currencyPair.from.max }} {{
+                  currencyPair.from.currency
+                }}</span></span>
           </div>
         </div>
         <div class="exchange__final-currency">
@@ -109,10 +117,18 @@
             >
           </div>
           <div class="exchange__final-currency-sub">
-            <span class="exchange__final-currency-sub-min">Мин.: <span
-                v-if="currencyPair !== null">{{ currencyPair.to.min }} {{ currencyPair.to.currency }}</span></span>
-            <span class="exchange__final-currency-sub-max">Макс.: <span
-                v-if="currencyPair !== null">{{ currencyPair.to.max }} {{ currencyPair.to.currency }}</span></span>
+            <span class="exchange__final-currency-sub-min">Мин.:
+              <span
+                  v-if="currencyPair !== null"
+                  class="exchange__final-currency-sub-value">{{ currencyPair.to.min }} {{
+                  currencyPair.to.currency
+                }}</span></span>
+            <span class="exchange__final-currency-sub-max">Макс.:
+              <span
+                  v-if="currencyPair !== null"
+                  class="exchange__final-currency-sub-value">{{ currencyPair.to.max }} {{
+                  currencyPair.to.currency
+                }}</span></span>
           </div>
         </div>
         <div class="exchange__payment-details" v-if="currencyPair !== null">
