@@ -43,7 +43,7 @@
         </div>
         <div class="exchange__options-list">
           <span class="exchange__options-before"
-                v-if="activeCurrencyInId === 0">Сначала выберите валюту для обмена</span>
+                v-if="activeCurrencyInId === 0">{{ getCurrencyOutMessage }}</span>
           <RadioCurrency
               v-else
               v-for="currencyOutItem in searchCurrency(currencyOut, searchOut)"
@@ -181,6 +181,9 @@ export default defineComponent({
       useFetch<Currency[]>('https://dev7d8d3h4.sova.gg/api/v1/calculator/'),
       useFetch<object>('https://dev7d8d3h4.sova.gg/api/v1/calculator/from/')
     ]);
+    if (!currency.value) {
+      throw createError({statusCode: 404, message: 'Произошла ошибка при загрузке данных'})
+    }
     let currencyValue: Currency = currency.value;
     let currencyInIdValue: number[] = currencyInId.value;
     let currencyIn: [] = currencyIdIncludeCalc(currencyValue, currencyInIdValue)
@@ -204,6 +207,8 @@ export default defineComponent({
       outCurrencyValue: 0,
       inCurrencyValue: 0,
       inputDisabled: 1,
+      getCurrencyOutMessage: 'Сначала выберите валюту для обмена',
+      errorMessage: 'Произошла ошибка при загрузке данных',
     }
   },
   computed: {
@@ -220,6 +225,10 @@ export default defineComponent({
   methods: {
     async getCurrencyOut(id: number) {
       this.currencyOutId = await useFetch<object>(`https://dev7d8d3h4.sova.gg/api/v1/calculator/from/${id}/`);
+      if (this.currencyOutId.data === null) {
+        this.getCurrencyOutMessage = this.errorMessage;
+        throw createError({statusCode: 404, message: this.errorMessage});
+      }
       this.resetCurrencyOut();
       this.currencyOut = currencyIdIncludeCalc(this.currency, this.currencyOutId.data);
       this.activeCurrencyInId = id;
